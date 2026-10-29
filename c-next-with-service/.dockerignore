@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.env
+.env.*
+!.env.example
+README.md
+biome.json
+drizzle.config.js

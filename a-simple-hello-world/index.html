@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello, World: a static page in a container</title>
+  <meta name="description" content="A plain HTML, CSS and JavaScript page served by nginx from a Docker container.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23f6f2ea'/%3E%3Ctext%20x='16'%20y='23'%20font-family='Georgia,serif'%20font-size='22'%20text-anchor='middle'%20fill='%23171512'%3Eh%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.theme-switch,.greetings{display:none}</style></noscript>
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('hello-theme'); } catch (error) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = saved ? saved === 'dark' : prefersDark;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <p class="wordmark">hello, world</p>
+    <button class="theme-switch" id="theme-toggle" type="button">
+      <span class="theme-switch__mark" aria-hidden="true"></span>
+      <span id="theme-label">Dark mode</span>
+    </button>
+  </header>
+
+  <main class="page" id="main">
+    <div class="hero">
+      <p class="kicker">A static page, served from a container</p>
+
+      <h1 class="title" aria-live="polite" aria-atomic="true">
+        <span id="greeting" lang="en">Hello</span>,<br>
+        <span class="title__word" id="subject" lang="en">World</span><span class="title__dot">.</span>
+      </h1>
+
+      <p class="lede">Three files, no build step, no framework. Point nginx at this folder and the container serves it as is.</p>
+
+      <div class="greetings" role="group" aria-label="Change the greeting">
+        <span class="greetings__label">Say it in</span>
+        <button class="greeting" type="button" lang="en" data-greeting="Hello" data-subject="World" aria-pressed="true">English</button>
+        <button class="greeting" type="button" lang="id" data-greeting="Halo" data-subject="Dunia" aria-pressed="false">Indonesian</button>
+        <button class="greeting" type="button" lang="fr" data-greeting="Bonjour" data-subject="Monde" aria-pressed="false">French</button>
+        <button class="greeting" type="button" lang="it" data-greeting="Ciao" data-subject="Mondo" aria-pressed="false">Italian</button>
+        <button class="greeting" type="button" lang="es" data-greeting="Hola" data-subject="Mundo" aria-pressed="false">Spanish</button>
+      </div>
+    </div>
+
+    <aside class="notes" aria-label="About this sample">
+      <section class="notes__section">
+        <h2 class="notes__title">In the image</h2>
+        <dl class="facts">
+          <div class="facts__row">
+            <dt>Base image</dt>
+            <dd>nginx:latest</dd>
+          </div>
+          <div class="facts__row">
+            <dt>Document root</dt>
+            <dd>/usr/share/nginx/html</dd>
+          </div>
+          <div class="facts__row">
+            <dt>Port</dt>
+            <dd>80</dd>
+          </div>        </dl>
+      </section>
+
+      <section class="notes__section">
+        <h2 class="notes__title">Files</h2>
+        <ul class="files">
+          <li class="files__row"><span class="files__name">index.html</span><span class="files__note">this page</span></li>
+          <li class="files__row"><span class="files__name">style.css</span><span class="files__note">layout and color</span></li>
+          <li class="files__row"><span class="files__name">app.js</span><span class="files__note">greeting and theme</span></li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>Sample for the learn-docker-build-and-compose notes.</p>
+    <p>Runs on <a href="https://hub.docker.com/_/nginx" rel="noreferrer">the official nginx image</a>.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

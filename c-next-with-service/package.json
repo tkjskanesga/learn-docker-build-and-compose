@@ -1,0 +1,40 @@
+{
+  "name": "kicau",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "bun src/database/migrate.js",
+    "db:seed": "bun src/database/seed.js",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "bcryptjs": "3.0.3",
+    "drizzle-orm": "0.45.4",
+    "next": "16.4.3",
+    "postgres": "3.4.9",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.2",
+    "@tailwindcss/turbopack": "^4",
+    "drizzle-kit": "0.31.11",
+    "tailwindcss": "^4"
+  },
+  "packageManager": "bun@1.4.4",
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
